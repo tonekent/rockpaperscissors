@@ -25,7 +25,41 @@ console.log(getHumanChoice());
 
 // 3. Score variables
 
-let humanScore = 0;
-let computerScore = 0;
+const humanScore = 0;
+const computerScore = 0;
 
 // 4. Round playing function
+
+function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        return "Tie!";
+      } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "paper") ||
+        (humanChoice === "paper" && computerChoice === "rock")
+      ) {
+        humanScore++;
+        return "You win! " + humanChoice + " beats " + computerChoice;
+      } else {
+        computerScore++;
+        return "You lose! " + computerChoice + " beats " + humanChoice;
+      }
+      
+      const humanSelection = getHumanChoice();
+      const computerSelection = getComputerChoice();
+      
+      playRound(humanSelection, computerSelection);
+      
+}
+
+console.log(playRound(getHumanChoice(), getComputerChoice()));
+
+// 5. Game playing function
+
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+      const humanSelection = getHumanChoice();
+      const computerSelection = getComputerChoice();
+      console.log(playRound(humanSelection, computerSelection));
+    }
+  }
